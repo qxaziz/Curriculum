@@ -1,0 +1,22 @@
+	Things to create:
+    page to add manage subject and items.
+    page to view all the items. 
+    
+    
+    
+    
+    Technicals:
+	
+	new entry is an object:
+	properties:
+				guid:
+				title:
+				description:
+				source:						
+						ebooks:
+						courses:
+						web sites:
+						courses online:
+				date entered:
+				next review date:
+				review date history:
