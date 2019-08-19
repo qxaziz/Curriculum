@@ -1,0 +1,31 @@
+	Things to create:
+    page to add manage subject and items.
+    page to view all the items. 
+    
+    
+    
+    
+    Technicals:
+	
+	new entry is an object:
+	properties:
+				guid:
+				title:
+				notes:
+				description:
+				source:						
+						ebooks:
+						courses:
+						web sites:
+						courses online:
+				date entered:
+				next review date:
+				review date history:
+
+TODAY:
+
+git commit -i my_filename  
+
+had a conflicted merge on the .gitignore file by working from home. From work made 
+changes to .gitignore and tried to push it but got conflicted merge.
+From the git documentation, the -i should be used to conclude a conflicted merge.
