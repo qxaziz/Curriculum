@@ -9,7 +9,9 @@
   "author": "Aziz A Qureshi",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "s": "^0.1.1"
   }
 }

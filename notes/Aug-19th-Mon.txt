@@ -29,3 +29,28 @@ git commit -i my_filename
 had a conflicted merge on the .gitignore file by working from home. From work made 
 changes to .gitignore and tried to push it but got conflicted merge.
 From the git documentation, the -i should be used to conclude a conflicted merge.
+
+steps to create template engine.
+//install view template engine  
+npm install ejs --save
+
+//set up the above template engine
+app.set('view engine','ejs')
+
+//create file structure
+|-- weather-app
+   |-- views
+      |-- index.ejs
+   |-- package.json
+   |-- server.js
+
+//change res.send('') to res.render('index')
+
+all css and js files are kept in public. Because we have view rendering. we need to
+explicitly mention it to expose it.
+app.use(express.static('public'))
+
+JSON stringyfy a js object and write to file. Nodemon was restarting when ever the file 
+is written continously.
+Remede: start the server with nodemon using the following:
+nodemon --ignore <file name or folder name> source: https://stackoverflow.com/questions/41957309/simple-nodemon-json-config-to-watch-all-except-for-certain-files
