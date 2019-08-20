@@ -14,34 +14,27 @@ var app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+var subject = [];
+var clsSubject;
 
-var clsSubject = cl.classSubject;
-var clsSkill = cl.classSkill;
+for (var x = 0; x < 5; x++) {
 
-clsSubject.GUID = id.generate();
-clsSubject.Title = "C#";
-clsSubject.Description = "Subject to learn C#";
+        clsSubject = cl.classSubject;
 
-fs.writeFile(dataurl + 'subjects.json', JSON.stringify(clsSubject,null, 2), (err)=>{
+        clsSubject.GUID = id.generate(8);
+        console.log(clsSubject.GUID);
+        clsSubject.Title = id.generate(1)+"#";
+        clsSubject.Description = "Subject to learn C#";
+        subject.push(clsSubject);
+}
+
+
+//subject = { subject };
+fs.writeFile(dataurl + 'subjects.json', JSON.stringify(subject,null, 2), (err)=>{
     if (err) throw err;
 
-    console.log('GUID: ' + clsSubject.GUID);
+    console.log('GUID:' + id.generate(8));
 });
-
-
-
-
-
-
-//count the number of properties in an object
-var subject = {title:"home", desc:"none",notes:"no notes yet"};
-
-
-
-
-
-
-
 
 
 app.get('/add', (req, res)=>{
