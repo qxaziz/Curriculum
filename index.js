@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 
-var cl = require('./public/js/classes.js')
+var subjectTemplate = require('./public/js/classes.js')
 var id = require('./public/js/randnum.js')
 var dataurl = './data/'
 
@@ -14,26 +14,28 @@ var app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-var subject = [];
-var clsSubject;
+var subject = [] ;
+
+
 
 for (var x = 0; x < 5; x++) {
-
-        clsSubject = cl.classSubject;
-
-        clsSubject.GUID = id.generate(8);
-        console.log(clsSubject.GUID);
-        clsSubject.Title = id.generate(1)+"#";
-        clsSubject.Description = "Subject to learn C#";
-        subject.push(clsSubject);
+     
+    /* create a new object like 'SubjectTemplate' or we could use = {} for blank new objects. 
+        If we want to replicate an identical object then use = Object.create(<object to be replicated>) */
+    var  clsSubject =   Object.create(subjectTemplate); 
+        clsSubject.GUID = id.generateRandomNumber(8)
+        clsSubject.Title = id.generateRandomNumber(1)+"#";
+        clsSubject.Description = "Subject to learn js"; 
+        subject[x] = clsSubject;
+       
 }
-
+    
 
 //subject = { subject };
 fs.writeFile(dataurl + 'subjects.json', JSON.stringify(subject,null, 2), (err)=>{
-    if (err) throw err;
+    if (err) throw err ;
 
-    console.log('GUID:' + id.generate(8));
+    console.log("Written to file !!!");
 });
 
 
