@@ -39,6 +39,4 @@ fs.writeFile(dataurl + 'subjects.json', JSON.stringify(subject,null, 2), (err)=>
 });
 
 
-app.get('/add', (req, res)=>{
-    res.render('index');
-}).listen(8080);
+app.get('/add', (req, res)=>{ res.render('index');}     ).listen(8080);
