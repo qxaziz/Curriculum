@@ -19,10 +19,9 @@ var clsSubject;
 
 for (var x = 0; x < 5; x++) {
 
-        clsSubject = cl.classSubject;
+        clsSubject = {};
 
         clsSubject.GUID = id.generate(8);
-        console.log(clsSubject.GUID);
         clsSubject.Title = id.generate(1)+"#";
         clsSubject.Description = "Subject to learn C#";
         subject.push(clsSubject);
@@ -39,4 +38,4 @@ fs.writeFile(dataurl + 'subjects.json', JSON.stringify(subject,null, 2), (err)=>
 
 app.get('/add', (req, res)=>{
     res.render('index');
-}).listen(8080);
+}).listen(4200);
