@@ -1,42 +1,50 @@
+const mongoose = require('mongoose');
 const express = require('express');
-const path = require('path');
-const fs = require('fs');
+const bodyParser = require('body-parser');
 
 
-var subjectTemplate = require('./public/js/classes.js')
-var id = require('./public/js/randnum.js')
-var dataurl = './data/'
 
+var subjectTemplate = require('./public/js/classes.js');
+var id = require('./public/js/randnum.js');
+var wirteToDB = require('./public/js/saveToDB.js');
+var dbModels = require('./public/js/dbmodels.js');
+
+var dataurl = './data/';
 
 var app = express();
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended : true}));
 
 app.use(express.static('public'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs') ;
 
-var subject = [] ;
+/*---------------------------------------------------*/
 
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb+srv://azizqureshi:7jZZ%26nA%40yx-wZ%407@curriculum-tknce.mongodb.net/test", {useNewUrlParser: true });
 
+var subjects = [] ; 
+app.get('/add', 
+(req, res)=>{
+    res.render('index');
+})
 
-for (var x = 0; x < 5; x++) {
-     
-    /* create a new object like 'SubjectTemplate' or we could use = {} for blank new objects. 
-        If we want to replicate an identical object then use = Object.create(<object to be replicated>) */
-    var  clsSubject =   Object.create(subjectTemplate); 
-        clsSubject.GUID = id.generateRandomNumber(8)
-        clsSubject.Title = id.generateRandomNumber(1)+"#";
-        clsSubject.Description = "Subject to learn js"; 
-        subject[x] = clsSubject;
-       
-}
-    
+app.post('/add', 
+(req, res)=>{ 
 
-//subject = { subject };
-fs.writeFile(dataurl + 'subjects.json', JSON.stringify(subject,null, 2), (err)=>{
-    if (err) throw err ;
+    var clSubject =  dbModels.subjectModel;
+        clSubject.GUID = id.generateRandomNumber(8);
+        clSubject.Title = req.body.title;
+        clSubject.Description = req.body.desc;
+        
+        if(clSubject.Title){
+          subjects.push(clSubject);
+          wirteToDB.WriteToDB(dataurl,subjects);
+         
+         // .then(()=>{res.redirect('/add')})
+         // .catch((err)=>{res.status(400).send("unable to save to db");})
+        }
+        res.redirect('/add');
+})
 
-    console.log("Written to file !!!");
-});
-
-
-app.get('/add', (req, res)=>{ res.render('index');}     ).listen(8080);
+app.listen(8080);
