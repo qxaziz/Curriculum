@@ -16,32 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
 
 app.use(express.static('public'));
-<<<<<<< HEAD
-app.set('view engine', 'ejs');
-
-var subjects = [] ;
-
-
-
-for (var x = 0; x < 5; x++) {
-     
-    /* create a new object like 'SubjectTemplate' or we could use = {} for blank new objects. 
-        If we want to replicate an identical object then use = Object.create(<object to be replicated>) */
-    var  clsSubject =   Object.create(subjectTemplate); 
-        clsSubject.GUID = id.generateRandomNumber(8)
-        clsSubject.Title = id.generateRandomNumber(1)+"#";
-        clsSubject.Description = "Subject to learn js"; 
-        subjects[x] = clsSubject;
-       
-}
-    
-
-//subject = { subject };
-fs.writeFile(dataurl + 'subjects.json', JSON.stringify(subjects,null, 2), (err)=>{
-    if (err) throw err ;
-=======
 app.set('view engine', 'ejs') ;
->>>>>>> 21a592081337d887f0d7089e867cb5763c93e619
 
 /*---------------------------------------------------*/
 
@@ -52,9 +27,6 @@ var subjects = [] ;
 app.get('/add', 
 (req, res)=>{
     res.render('index');
-<<<<<<< HEAD
-}).listen(4200);
-=======
 })
 
 app.post('/add', 
@@ -76,4 +48,3 @@ app.post('/add',
 })
 
 app.listen(8080);
->>>>>>> 21a592081337d887f0d7089e867cb5763c93e619
