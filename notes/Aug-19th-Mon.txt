@@ -54,3 +54,4 @@ JSON stringyfy a js object and write to file. Nodemon was restarting when ever t
 is written continously.
 Remede: start the server with nodemon using the following:
 nodemon --ignore <file name or folder name> source: https://stackoverflow.com/questions/41957309/simple-nodemon-json-config-to-watch-all-except-for-certain-files
+

@@ -1,0 +1,2 @@
+create a new object like 'SubjectTemplate' or we could use = {} for blank new objects. 
+If we want to replicate an identical object then use = Object.create(<object to be replicated>)

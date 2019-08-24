@@ -1,4 +1,4 @@
 {
     "verbose": true,
-    "ignore": [".git", "node_modules", "data", "notes"]
+    "ignore": [".git", ".vscode", "node_modules", "data", "notes"]
 }

@@ -2,7 +2,7 @@ var alphaNumber = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy
 
 var idLength = 8;
 
-exports.generate = function(x){
+exports.generateRandomNumber = function(x){
     var id = '';
     for (var i = 0; i < x; i++){
         id += alphaNumber.charAt(Math.floor(Math.random() * alphaNumber.length))
