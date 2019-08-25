@@ -19,15 +19,15 @@ var skillSchema = new mongoose.Schema({
         web_sites: String,
         courses_online: String
     },
-    Date_Entered: Date,
+    Date_Entered: Date.now(),
     Next_Review_Date: Date,
     Review_Date_History: String
 })
 
 
-exports.subjectModel = function(coll) {
-    return mongoose.model(coll, subjectSchema);
+exports.subjectModel = function(colName) {
+    return mongoose.model(colName, subjectSchema);
 }
-exports.skillModel = function(coll) {
-    return mongoose.model(coll, skillSchema);
+exports.skillModel = function(colName) {
+    return mongoose.model(colName, skillSchema);
 }

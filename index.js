@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 
 
 var subjectTemplate = require('./public/js/classes.js');
-var id = require('./public/js/randnum.js');
-var wirteToDB = require('./public/js/saveToDB.js');
-var dbModels = require('./public/js/dbmodels.js');
+var id = require('./Public/js/utility/randnum.js');
+var wirteToDB = require('./Public/js/utility/saveToDB.js/index.js');
+var dbModels = require('./Public/js/skillset/dbmodels.js/index.js.js');
 
 var dataurl = './data/';
 
@@ -26,24 +26,14 @@ mongoose.connect("mongodb+srv://azizqureshi:7jZZ%26nA%40yx-wZ%407@curriculum-tkn
 var subjects = [] ; 
 app.get('/add', 
 (req, res)=>{
-    res.render('index');
+    res.render('add');
 })
 
 app.post('/add', 
 (req, res)=>{ 
 
-    var clSubject =  dbModels.subjectModel;
-        clSubject.GUID = id.generateRandomNumber(8);
-        clSubject.Title = req.body.title;
-        clSubject.Description = req.body.desc;
+
         
-        if(clSubject.Title){
-          subjects.push(clSubject);
-          wirteToDB.WriteToDB(dataurl,subjects);
-         
-         // .then(()=>{res.redirect('/add')})
-         // .catch((err)=>{res.status(400).send("unable to save to db");})
-        }
         res.redirect('/add');
 })
 
