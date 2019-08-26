@@ -4,8 +4,9 @@ const chalk = require('chalk');
 
 var dbName = 'curriculum';
 var port = require('./Public/js/DB/properties').PORT;
-var db = require('./Public/js/DB/database')
-
+var db = require('./Public/js/DB/database');
+var subjectRouter = require('./Public/js/subjects/subject.routes');
+var router = express.Router;
 
 var app = express();
 app.use(bodyParser.json());
@@ -17,6 +18,8 @@ app.set('view engine', 'ejs') ;
 
 
 db(dbName);
+
+subjectRouter(router);
 
 app.listen(port, (req, res)=>{
     console.log(chalk.bgGreen.bold('Server is listening at $(dbProperties.PORT) port'))
