@@ -1,5 +1,5 @@
 var Subjects = require('./subject.dao');
-var id = require('..utility/randnum');
+var id = require('../utility/randnum');
 
 exports.CreateSubject = (req, res, next)=>{
     var subject = {

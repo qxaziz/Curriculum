@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 var subSchema = require('./subject.schemas');
-//var subjects = 'subjects';
+var subjects = 'subjects';
 
 
 
 
 
-subSchema.subjectSchema.statics =
+subSchema.statics =
  {
     create: (data, callback)=>{ var subject = new this(data); subject.save(callback); },
 
@@ -21,4 +21,4 @@ subSchema.subjectSchema.statics =
 
 }
 
-exports.herosModel = mongoose.Model('subjects', subSchema)
+module.exports = mongoose.model(subjects, subSchema);

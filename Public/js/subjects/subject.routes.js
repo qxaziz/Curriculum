@@ -1,6 +1,6 @@
 var Subjects = require('./subject.controller');
 
-exports = (router)=>{
+module.exports = (router)=>{
     
 router.post('/create', Subjects.CreateSubject);
 router.get('/get', Subjects.getSubjects );
