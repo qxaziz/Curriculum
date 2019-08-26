@@ -1,4 +1,4 @@
-var Subjects = require('./subject.controller');
+var Subjects = require('./subject.controller-old');
 
 module.exports = (router)=>{
     
