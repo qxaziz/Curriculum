@@ -51,7 +51,7 @@ app.get('/get', (req, res, next)=>{
 //app.post('/create', Subjects.CreateSubject);
 
 app.listen(port, (req, res)=>{
-    console.log(chalk.bgGreen.bold('Server is listening at $(dbProperties.PORT) port'))
-})
+    console.log(chalk.bgGreen.bold('Server is listening at ' dbProperties.PORT + 'port'))
+}) 
 
 
