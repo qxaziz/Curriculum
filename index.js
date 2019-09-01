@@ -36,7 +36,7 @@ app.get('/', (req, res, next)=>{
     })
 })
 app.get('/get', (req, res, next)=>{
-    if(true){
+    if(false){
         var subject = mongoose.model(subjectColl, schema);
         subject.find({},(err, subjects)=>{
            if(err){console.log(err);}
@@ -44,8 +44,9 @@ app.get('/get', (req, res, next)=>{
         })
     }else{
 
-    var result = controller.findAll(subjectColl);
-    res.send(JSON.stringify(controller.findAll(subjectColl))); }
+    var result = controller.findAll(subjectColl)
+    .then(res.send(result));
+    }
 });
 
 //app.post('/create', Subjects.CreateSubject);
