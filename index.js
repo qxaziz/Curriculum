@@ -36,7 +36,7 @@ app.get('/', (req, res, next)=>{
     })
 })
 app.get('/get', (req, res, next)=>{
-    if(false){
+    if(true){
         var subject = mongoose.model(subjectColl, schema);
         subject.find({},(err, subjects)=>{
            if(err){console.log(err);}
@@ -55,7 +55,7 @@ app.listen(port, (err)=>{
     if(err){
         console.log(err);
     }else{
-        console.log(chalk.bgRedBright('The Server is listening at port : ${port}'))
+        console.log(chalk.bgRedBright('The Server is listening at port : ' + port))
     }
 })
  
