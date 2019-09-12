@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var subjectSchema = new Schema({
     GUID: {type: String, required: true, unique: true},
-    Title: {type: String, required: true, unique: false},
+    Title: {type: String, required: true, unique: true},
     Desc: String
 });
 
