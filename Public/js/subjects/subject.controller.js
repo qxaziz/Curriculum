@@ -1,5 +1,9 @@
 var Subjects = require('./subject.dao');
 var id = require('../utility/randnum');
+var subjectColl = 'subjects';
+var subjectSchema = require('./subject.schemas');
+
+const mongoose = require('mongoose');
 
 exports.CreateSubject = (req, res, next)=>{
     var subject = {
@@ -42,9 +46,39 @@ exports.updateSubject = (req, res, next)=>{
    })
 }
 
-exports.removeSubject = (req, res, next)=>{
+exports.removeSubjects = (req, res, next)=>{
         Subjects.delete({_id : req.params.id }, (err, subject)=>{
                 if(err){ res.json({ error : err }) };
                 res.json({ message : "subject deleted successfully"})
         })
+}
+
+exports.removeSubject = (req)=>{
+    
+}
+
+
+
+exports.createSubject = (req)=>{
+
+    return new Promise((resolve, reject)=>{
+        var subject = mongoose.model(subjectColl, subjectSchema);
+        var newSub = new subject({GUID : id.generateRandomNumber(8), Title : req.body.title, Desc : req.body.desc})
+        newSub.save((error)=>{
+            if(error){ reject(error); }
+            else { resolve(); }
+        })
+    })
+}
+
+
+exports.findAllSubjects = ()=>{
+
+    return new Promise((resolve, reject)=>{
+        var subModel = mongoose.model(subjectColl, subjectSchema);
+        subModel.find({}, (err, data)=>{
+            if(err){ reject(err) }
+            else{ resolve(data) }
+        })
+    })
 }
