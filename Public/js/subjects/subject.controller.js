@@ -53,17 +53,25 @@ exports.removeSubjects = (req, res, next)=>{
         })
 }
 
-exports.removeSubject = (req)=>{
+exports.removeSubject = (guid)=>{
+
+    return new Promise((resolve, reject)=>{
+        var subject = mongoose.model(subjectColl, subjectSchema);
+        subject.deleteOne({GUID: guid}, (error)=>{
+            if(error){ reject(error); }
+            else{ resolve()}
+        })
+    })
     
 }
 
 
 
-exports.createSubject = (req)=>{
+exports.createSubject = (title, desc)=>{
 
     return new Promise((resolve, reject)=>{
         var subject = mongoose.model(subjectColl, subjectSchema);
-        var newSub = new subject({GUID : id.generateRandomNumber(8), Title : req.body.title, Desc : req.body.desc})
+        var newSub = new subject({GUID : id.generateRandomNumber(8), Title : title, Desc : desc})
         newSub.save((error)=>{
             if(error){ reject(error); }
             else { resolve(); }
