@@ -29,41 +29,33 @@ db(dbName);
 
 app.get('/', (req, res, next)=>{
     res.render('index');
-    
-    next();
-},()=>{
-    console.log("I am in the home route");
-
-    controller.removeSubject("t0RcSLro")
-    .then(()=>{ res.redirect('./get'); })
-    .catch((error)=>{console.log(error); })
 })
 
  app.post('/create', (req, res, next)=>{
-
-
     controller.createSubject(req.body.title, req.body.desc)
     .then(()=>{ res.redirect('./get'); })
     .catch((error)=>{ console.log(error); })
-
 })
-
-app.get('/d/:GUID', (req, res)=>{
-
-    console.log(req.params.GUID)
-    controller.removeSubject(req.params.GUID)
-    .then(()=>{ res.redirect('./get'); })
-    .catch((error)=>{console.log(error); })
-})
-
 
 app.get('/get', (req, res,)=>{
-
     controller.findAllSubjects()
     .then((data)=>{ res.send(data); })                                             
     .catch((error)=>{ console.log(error); })
-
 });
+//Write a Delete Route
+/*app.get('/d/:GUID', (req, res)=>{
+
+    console.log(req.params.GUID)
+    controller.removeSubject(req.params.GUID)
+    .then(()=>{ 
+        //res.redirect('./get');
+        console.log(GUID + " has been DELETED.");
+     })
+    .catch((error)=>{console.log(error); })
+})*/
+
+
+
 
 
 
