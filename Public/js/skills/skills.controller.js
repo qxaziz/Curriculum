@@ -79,12 +79,8 @@ exports.createSkill = (title, desc, date)=>{
             GUID : id.generateRandomNumber(8), 
             Title : title, 
             Desc : desc, 
-            startMonth: date.getMonth,
-            startDay: date.getDay,
-            startYear: date.getYear,
-            nextMonth: date.getMonth,
-            nextDay: 
-            nextYear: getYear(date),
+            StartDate : date,
+            NextDate : date
         })
 
         skillModel.save((error)=>{
