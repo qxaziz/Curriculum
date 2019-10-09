@@ -4,7 +4,8 @@ const chalk = require('chalk');
 const path = require('path')
 var port = require('./Public/js/DB/properties').PORT;
 var db = require('./Public/js/DB/database');
-var controller = require('./public/js/subjects/subject.controller')
+var subjectController = require('./public/js/subjects/subject.controller')
+var skillController = require('./public/js/skills/skills.controller')
 
 var dbName = 'curriculum';
 var app = express();
@@ -28,14 +29,26 @@ app.get('/', (req, res, next)=>{
     res.render('index');
 })
 
- app.post('/create', (req, res, next)=>{
-    controller.createSubject(req.body.title, req.body.desc)
-    .then(()=>{ res.redirect('./get'); })
+ app.post('/createSubject', (req, res, next)=>{
+    subjectController.createSubject(req.body.title, req.body.desc)
+    .then(()=>{ res.redirect('./gsub'); })
     .catch((error)=>{ console.log(error); })
 })
 
-app.get('/get', (req, res,)=>{
-    controller.findAllSubjects()
+app.post('/createSkill', (req, res, next)=>{
+    skillController.createSkill(req.body.title, req.body.desc, req.body.datedone)
+    .then(()=>{ res.redirect('./gskill'); })
+    .catch((error)=>{ console.log(error); })
+})
+
+app.get('/gsub', (req, res,)=>{
+    subjectController.findAllSubjects()
+    .then((data)=>{ res.send(data); })                                             
+    .catch((error)=>{ console.log(error); })
+});
+
+app.get('/gskill', (req, res,)=>{
+    skillController.findAllSkills()
     .then((data)=>{ res.send(data); })                                             
     .catch((error)=>{ console.log(error); })
 });
