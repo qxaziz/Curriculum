@@ -6,21 +6,37 @@ $(()=>{
 
 function RunMain(){
     var t = document.getElementById('calendar');
-
+    //$('#calendar').fullCalendar({plugins: [ 'dayGrid']})
+    
     var c = new FullCalendar.Calendar(t, {
         plugins: [ 'dayGrid'],
-        events: [
+        /*events: [
             {
-                title: 'The title !',
+                title: 'Trial event',
                 start: '2019-10-01',
             }
-        ]
-    });
+        ]*/
+    }); 
+
+    
+
     c.render();
+ 
+    c.on('dayClick', function(date, jsEvent, view){
+        alert(date.format());
+    });
+    //dayClicked();
 
-    dayClicked();
+    //$(".fc-button").click(dayClicked);
 
-    $(".fc-button").click(dayClicked);
+    //adds datepicker
+    var date_input = $('input[name="datedone"]');
+     
+    date_input.datepicker({
+        format: 'mm/dd/yyyy',
+        todayHighlight: true,
+        autoClose : true,
+    })
 }
 
 function dayClicked(){
@@ -28,5 +44,9 @@ function dayClicked(){
 }
 
 function doWhenDayClicked(){
-    alert("Handler clicked for the day element.");
+    //alert("Handler clicked for the day element.");
+}
+
+function myFunction(event) {
+   // alert(event.target.id);
 }
