@@ -24,9 +24,9 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <h1>I am working ...</h1>
+                <h1>Create a Subject</h1>
 
-                <form method="POST" action="/create">
+                <form method="POST" action="/createSubject">
                     <div>
                         <label>Title:</label>
                         <input type="text" name="title"> 
@@ -40,6 +40,27 @@
                     <input type="submit" value="Submit">
                 </form>
             </div>
+            <h1>Create a Skill</h1>
+
+            <form method="POST" action="/createSkill">
+                <div>
+                    <label>Title:</label>
+                    <input type="text" name="title"> 
+                </div>
+                
+                <div>
+                    <label>Desc:</label>
+                    <input type="text" name="desc"> 
+                </div>
+
+                <div>
+                    <label>Date Done:</label>
+                    <input type="text" name="datedone"> 
+                </div>
+                
+                <input type="submit" value="Submit">
+            </form>
+        </div>
             <div class="col-sm">
                 <div id='calendar'></div>
             </div>
