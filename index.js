@@ -38,6 +38,7 @@ app.get('/', (req, res, next)=>{
 app.post('/createSkill', (req, res, next)=>{
     skillController.createSkill(req.body.title, req.body.desc, req.body.datedone)
     .then(()=>{ res.redirect('./gskill'); })
+    
     .catch((error)=>{ console.log(error); })
 })
 
